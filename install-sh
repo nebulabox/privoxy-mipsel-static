@@ -37,7 +37,6 @@ cpprog="${CPPROG-cp}"
 chmodprog="${CHMODPROG-chmod}"
 chownprog="${CHOWNPROG-chown}"
 chgrpprog="${CHGRPPROG-chgrp}"
-stripprog="${STRIPPROG-strip}"
 rmprog="${RMPROG-rm}"
 mkdirprog="${MKDIRPROG-mkdir}"
 
@@ -47,7 +46,6 @@ instcmd="$mvprog"
 chmodcmd="$chmodprog 0755"
 chowncmd=""
 chgrpcmd=""
-stripcmd=""
 rmcmd="$rmprog -f"
 mvcmd="$mvprog"
 src=""
@@ -76,10 +74,6 @@ while [ x"$1" != x ]; do
 
 	-g) chgrpcmd="$chgrpprog $2"
 	    shift
-	    shift
-	    continue;;
-
-	-s) stripcmd="$stripprog"
 	    shift
 	    continue;;
 
@@ -196,7 +190,6 @@ then
 
 	if [ x"$chowncmd" != x ]; then $doit $chowncmd $dst; else true ; fi &&
 	if [ x"$chgrpcmd" != x ]; then $doit $chgrpcmd $dst; else true ; fi &&
-	if [ x"$stripcmd" != x ]; then $doit $stripcmd $dst; else true ; fi &&
 	if [ x"$chmodcmd" != x ]; then $doit $chmodcmd $dst; else true ; fi
 else
 
@@ -237,7 +230,6 @@ else
 
 	if [ x"$chowncmd" != x ]; then $doit $chowncmd $dsttmp; else true;fi &&
 	if [ x"$chgrpcmd" != x ]; then $doit $chgrpcmd $dsttmp; else true;fi &&
-	if [ x"$stripcmd" != x ]; then $doit $stripcmd $dsttmp; else true;fi &&
 	if [ x"$chmodcmd" != x ]; then $doit $chmodcmd $dsttmp; else true;fi &&
 
 # Now rename the file to the real destination.

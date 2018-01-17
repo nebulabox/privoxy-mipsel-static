@@ -79,10 +79,6 @@ while [ x"$1" != x ]; do
 	    shift
 	    continue;;
 
-	-s) stripcmd="$stripprog"
-	    shift
-	    continue;;
-
 	-t=*) transformarg=`echo $1 | sed 's/-t=//'`
 	    shift
 	    continue;;
